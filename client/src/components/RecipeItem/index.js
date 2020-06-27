@@ -8,7 +8,7 @@ const { Meta } = Card;
 function RecipeItem() {
   return (
     <Card
-      style={{ width: 400 }}
+      style={{ width: 350 }}
       cover={
         <img
           alt="example"
@@ -16,7 +16,7 @@ function RecipeItem() {
         />
       }
     >
-      <h3>Header</h3>
+      <h4>Header</h4>
       <center>
         <Button>
           <a href="http://www.google.com">Default Button</a>

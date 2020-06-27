@@ -6,7 +6,7 @@ function RecipeHeader(props) {
     <div className="jumbotron jumbotron-fluid">
       <div className="container">
         <h1 className="display-3 text-center">iEat</h1>
-        <p className="lead text-center">Welcome {props.userName}</p>
+        <h2 className=" text-center">Welcome {props.userName}</h2>
       </div>
     </div>
   );
