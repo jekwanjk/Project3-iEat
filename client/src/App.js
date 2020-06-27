@@ -5,7 +5,7 @@ import Recipes from "./pages/Recipes.js";
 import RecipeHeader from "./components/RecipeHeader";
 
 function App() {
-  return <RecipeHeader />;
+  return <Recipes />;
 }
 
 export default App;

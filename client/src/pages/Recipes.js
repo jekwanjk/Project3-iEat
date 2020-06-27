@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import Spoonacular from "../utils/Spoonacular";
+import RecipeHeader from "../components/RecipeHeader";
+import RecipeItem from "../components/RecipeItem";
 
 function Recipes() {
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
+    name: "Amanda",
     dietRestrictions: "peanuts",
     calories: 2000,
     dietType: "Gluten Free"
@@ -179,7 +182,14 @@ function Recipes() {
     });
   }
 
-  return null;
+  return (
+    <div>
+      <RecipeHeader userName={userData.name}></RecipeHeader>
+      <h3 className="text-center">Meal Plan For The Week</h3>
+      <hr></hr>
+      <RecipeItem></RecipeItem>
+    </div>
+  );
 }
 
 export default Recipes;

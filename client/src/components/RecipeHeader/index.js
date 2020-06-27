@@ -1,11 +1,14 @@
 import React from "react";
-import { Row, Col } from "antd";
 
-function RecipeHeader() {
+function RecipeHeader(props) {
+  console.log("PROPS", props);
   return (
-    <Row>
-      <Col span={24}>Hi</Col>
-    </Row>
+    <div className="jumbotron jumbotron-fluid">
+      <div className="container">
+        <h1 className="display-3 text-center">iEat</h1>
+        <p className="lead text-center">Welcome {props.userName}</p>
+      </div>
+    </div>
   );
 }
 
