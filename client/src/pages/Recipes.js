@@ -6,6 +6,9 @@ import RecipeItem from "../components/RecipeItem";
 import { Row, Col } from "antd";
 
 function Recipes() {
+  // Spoonacular API Key
+  const spoonacularAPI = "3263f166c0c8482980892c72859a8858";
+
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
     name: "Amanda",
@@ -20,8 +23,10 @@ function Recipes() {
   // Array of objects with id, img, ingredients, qty, and units
   const imgIngredients = [];
 
-  // Final recipes array of objects with id, title, sourceURL, img, ingredients, qty, and units
   let finalRecipes = [];
+
+  // Final recipes array of objects with id, title, sourceURL, img, ingredients, qty, and units
+  const [finalRecipesDOM, setFinalRecipesDOM] = useState([]);
 
   useEffect(() => {
     /* -------------------------------------------------------
@@ -39,13 +44,14 @@ function Recipes() {
     getAllRecipes(
       userData.dietRestrictions,
       userData.calories,
-      userData.dietType
+      userData.dietType,
+      spoonacularAPI
     );
   }, []);
 
   // Set Spoonacular API res.data to originalRecipes variable
-  function getAllRecipes(dietRestrictions, calories, dietType) {
-    Spoonacular.getRecipes(dietRestrictions, calories, dietType)
+  function getAllRecipes(dietRestrictions, calories, dietType, apiKey) {
+    Spoonacular.getRecipes(dietRestrictions, calories, dietType, apiKey)
       .then((res) => {
         console.log(res);
 
@@ -137,13 +143,16 @@ function Recipes() {
             finalRecipes = resData;
             console.log("FINAL DATA: ");
             console.log(finalRecipes);
+
+            setFinalRecipesDOM(finalRecipes);
+            console.log("FINAL DATA FOR DOM", finalRecipesDOM);
             /* -------------------------------------------------------
                 TODO: SEND FINAL DATA TO DATABASE 
                 - ingredients, qty, and units are all arrays - must 
                 make them to string so that they can be passed to 
                 the database
             ---------------------------------------------------------*/
-          }, 2000);
+          }, 3000);
         });
       })
       .catch((err) => console.log(err));
@@ -153,10 +162,16 @@ function Recipes() {
   function getRecipeImgIngredients() {
     return new Promise(function (resolve, reject) {
       for (let i = 0; i < idTitleSourceURL.length; i++) {
+        // let queryURLImgs =
+        //   "https://api.spoonacular.com/recipes/" +
+        //   idTitleSourceURL[i].id +
+        //   "/information?apiKey=8cbc427f40924ae7b06b6e2d4c0ce89f";
+
         let queryURLImgs =
           "https://api.spoonacular.com/recipes/" +
           idTitleSourceURL[i].id +
-          "/information?apiKey=8cbc427f40924ae7b06b6e2d4c0ce89f";
+          "/information?apiKey=" +
+          spoonacularAPI;
 
         Spoonacular.getImgIngredients(queryURLImgs).then((res) => {
           console.log(res);
@@ -195,9 +210,9 @@ function Recipes() {
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <center>
             {/* <RecipeItem
-              img={finalRecipes[0].img}
-              name={finalRecipes[0].name}
-              source={finalRecipes[0].sourceUrl}
+              img={finalRecipesDOM[0].img}
+              name={finalRecipesDOM[0].name}
+              source={finalRecipesDOM[0].sourceUrl}
             ></RecipeItem> */}
           </center>
         </Col>
