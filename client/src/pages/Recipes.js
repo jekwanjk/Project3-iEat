@@ -156,7 +156,7 @@ function Recipes() {
         let queryURLImgs =
           "https://api.spoonacular.com/recipes/" +
           idTitleSourceURL[i].id +
-          "/information?apiKey=e4dd8c896acb49c3a477774ef868e953";
+          "/information?apiKey=8cbc427f40924ae7b06b6e2d4c0ce89f";
 
         Spoonacular.getImgIngredients(queryURLImgs).then((res) => {
           console.log(res);
