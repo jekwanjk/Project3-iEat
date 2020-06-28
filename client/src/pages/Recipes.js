@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "3263f166c0c8482980892c72859a8858";
+  const spoonacularAPI = "4c0bf71db84a479d8761a571bbc6f17c";
 
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
@@ -152,7 +152,7 @@ function Recipes() {
                 make them to string so that they can be passed to 
                 the database
             ---------------------------------------------------------*/
-          }, 3000);
+          }, 3500);
         });
       })
       .catch((err) => console.log(err));
@@ -204,154 +204,27 @@ function Recipes() {
       <h3 className="text-center">Meal Plan For The Week</h3>
       <hr></hr>
       <br></br>
-      <h3 className="text-center">Day 1</h3>
-      <br></br>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            {/* <RecipeItem
-              img={finalRecipesDOM[0].img}
-              name={finalRecipesDOM[0].name}
-              source={finalRecipesDOM[0].sourceUrl}
-            ></RecipeItem> */}
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-      </Row>
+      <h3 className="text-center">Meal Plan For The Week</h3>
 
       <br></br>
-      <h3 className="text-center">Day 2</h3>
-      <br></br>
       <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-      </Row>
-
-      <br></br>
-      <h3 className="text-center">Day 3</h3>
-      <br></br>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-      </Row>
-
-      <br></br>
-      <h3 className="text-center">Day 4</h3>
-      <br></br>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-      </Row>
-
-      <br></br>
-      <h3 className="text-center">Day 5</h3>
-      <br></br>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-      </Row>
-
-      <br></br>
-      <h3 className="text-center">Day 6</h3>
-      <br></br>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-      </Row>
-
-      <br></br>
-      <h3 className="text-center">Day 7</h3>
-      <br></br>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-          <center>
-            <RecipeItem></RecipeItem>
-          </center>
-        </Col>
+        {finalRecipesDOM != [] ? (
+          finalRecipesDOM.map((recipe, index) => (
+            <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+              <center>
+                <RecipeItem
+                  img={recipe.img}
+                  name={recipe.name}
+                  source={recipe.sourceUrl}
+                  key={index}
+                ></RecipeItem>
+              </center>
+              <br />
+            </Col>
+          ))
+        ) : (
+          <p>Loading Recipes...</p>
+        )}
       </Row>
     </div>
   );

@@ -5,21 +5,14 @@ import { Button } from "antd";
 
 const { Meta } = Card;
 
-function RecipeItem() {
+function RecipeItem(props) {
+  console.log("Card props", props);
   return (
-    <Card
-      style={{ width: 350 }}
-      cover={
-        <img
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-        />
-      }
-    >
-      <h4>Header</h4>
+    <Card style={{ width: 350 }} cover={<img alt="Recipe" src={props.img} />}>
+      <h5>{props.name}</h5>
       <center>
         <Button>
-          <a href="http://www.google.com">Default Button</a>
+          <a href={props.source}> View Recipe</a>
         </Button>
       </center>
     </Card>
