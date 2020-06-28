@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "47f6f76250da489d8f6823382a736d48";
+  const spoonacularAPI = "507fb12676b84fca8ded222cb33eab63";
 
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
@@ -159,12 +159,7 @@ function Recipes() {
                 make them to string so that they can be passed to 
                 the database
             ---------------------------------------------------------*/
-            // API.recordRecipes(finalRecipes)
-            //   .then((res) =>
-            //    console.log("Recipes added to database!")
-            //     })
-            //   )
-            //   .catch((err) => console.log(err));
+            // storeRecipes()
           }, 3500);
         });
       })
@@ -205,6 +200,21 @@ function Recipes() {
       resolve(imgIngredients);
     });
   }
+
+  /* -------------------------------------------------------
+                TODO: SEND FINAL DATA TO DATABASE 
+                - ingredients, qty, and units are all arrays - must 
+                make them to string so that they can be passed to 
+                the database
+    ---------------------------------------------------------*/
+
+  // function storeRecipes() {
+  //   API.recordRecipes(finalRecipes)
+  //     .then((res) => {
+  //       console.log("Recipes added to database!");
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   return (
     <div>
