@@ -6,7 +6,6 @@ import { Button } from "antd";
 const { Meta } = Card;
 
 function RecipeItem(props) {
-  console.log("Card props", props);
   return (
     <Card style={{ width: 350 }} cover={<img alt="Recipe" src={props.img} />}>
       <h5>{props.name}</h5>

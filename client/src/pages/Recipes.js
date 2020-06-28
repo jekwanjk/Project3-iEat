@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "4c0bf71db84a479d8761a571bbc6f17c";
+  const spoonacularAPI = "47f6f76250da489d8f6823382a736d48";
 
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
@@ -35,10 +35,17 @@ function Recipes() {
 
     // TODO: Call backend to get the user data
     // API.getUserInfo()
-    //     .then((res) => SET USER DATA)
-    //     .catch((err) => console.log(err));
+    //   .then((res) =>
+    //     setUserData({
+    //       name: res.name,
+    //       dietRestrictions: res.dietRestrictions,
+    //       calories: res.calories,
+    //       dietType: res.dietType
+    //     })
+    //   )
+    //   .catch((err) => console.log(err));
 
-    console.log(JSON.stringify(userData));
+    // console.log(JSON.stringify(userData));
 
     // Get all recipes from Spoonacular API
     getAllRecipes(
@@ -152,6 +159,12 @@ function Recipes() {
                 make them to string so that they can be passed to 
                 the database
             ---------------------------------------------------------*/
+            // API.recordRecipes(finalRecipes)
+            //   .then((res) =>
+            //    console.log("Recipes added to database!")
+            //     })
+            //   )
+            //   .catch((err) => console.log(err));
           }, 3500);
         });
       })
@@ -162,11 +175,6 @@ function Recipes() {
   function getRecipeImgIngredients() {
     return new Promise(function (resolve, reject) {
       for (let i = 0; i < idTitleSourceURL.length; i++) {
-        // let queryURLImgs =
-        //   "https://api.spoonacular.com/recipes/" +
-        //   idTitleSourceURL[i].id +
-        //   "/information?apiKey=8cbc427f40924ae7b06b6e2d4c0ce89f";
-
         let queryURLImgs =
           "https://api.spoonacular.com/recipes/" +
           idTitleSourceURL[i].id +
@@ -201,16 +209,28 @@ function Recipes() {
   return (
     <div>
       <RecipeHeader userName={userData.name}></RecipeHeader>
+
+      {/* TODO: wait until user is defined to add name to page
+      {userData != [] ? (
+        <RecipeHeader userName={userData.name}></RecipeHeader>
+      ) : (
+        <p>User doesn't exist</p>
+      )} */}
+
       <h3 className="text-center">Meal Plan For The Week</h3>
       <hr></hr>
-      <br></br>
-      <h3 className="text-center">Meal Plan For The Week</h3>
-
       <br></br>
       <Row type="flex">
         {finalRecipesDOM != [] ? (
           finalRecipesDOM.map((recipe, index) => (
-            <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <Col
+              key={parseInt(recipe.id + 1)}
+              xs={24}
+              sm={24}
+              md={8}
+              lg={8}
+              xl={8}
+            >
               <center>
                 <RecipeItem
                   img={recipe.img}
