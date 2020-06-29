@@ -7,14 +7,15 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "507fb12676b84fca8ded222cb33eab63";
+  const spoonacularAPI = "21d43743f24e4162b30f8803e6cab610";
 
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
-    name: "Amanda",
+    name: "",
     dietRestrictions: "peanuts",
     calories: 2000,
-    dietType: "Gluten Free"
+    dietType: "Gluten Free",
+    recipes: []
   });
 
   // Array of recipe ids, title, sourceURL
@@ -34,18 +35,19 @@ function Recipes() {
     ---------------------------------------------------------*/
 
     // TODO: Call backend to get the user data
-    // API.getUserInfo()
-    //   .then((res) =>
-    //     setUserData({
-    //       name: res.name,
-    //       dietRestrictions: res.dietRestrictions,
-    //       calories: res.calories,
-    //       dietType: res.dietType
-    //     })
-    //   )
-    //   .catch((err) => console.log(err));
+    API.getUserInfo()
+      .then((res) => {
+        console.log("User info", res);
+        setUserData({
+          name: res.name,
+          dietRestrictions: res.dietRestrictions,
+          calories: res.calories,
+          dietType: res.dietType
+        });
+      })
+      .catch((err) => console.log(err));
 
-    // console.log(JSON.stringify(userData));
+    console.log(JSON.stringify(userData));
 
     // Get all recipes from Spoonacular API
     getAllRecipes(
@@ -155,11 +157,8 @@ function Recipes() {
             console.log("FINAL DATA FOR DOM", finalRecipesDOM);
             /* -------------------------------------------------------
                 TODO: SEND FINAL DATA TO DATABASE 
-                - ingredients, qty, and units are all arrays - must 
-                make them to string so that they can be passed to 
-                the database
             ---------------------------------------------------------*/
-            // storeRecipes()
+            storeRecipes();
           }, 3500);
         });
       })
@@ -203,18 +202,16 @@ function Recipes() {
 
   /* -------------------------------------------------------
                 TODO: SEND FINAL DATA TO DATABASE 
-                - ingredients, qty, and units are all arrays - must 
-                make them to string so that they can be passed to 
-                the database
     ---------------------------------------------------------*/
 
-  // function storeRecipes() {
-  //   API.recordRecipes(finalRecipes)
-  //     .then((res) => {
-  //       console.log("Recipes added to database!");
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  function storeRecipes() {
+    console.log("Store recipes");
+    API.recordRecipes(finalRecipes)
+      .then((res) => {
+        console.log("Recipes added to database!");
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div>

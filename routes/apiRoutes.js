@@ -5,6 +5,7 @@ const passport = require("passport");
 router.post("/api/recipes", function (req, res) {
   console.log(req.body);
   db.Recipe.create(req.body).then(function (results) {
+    console.log(results);
     res.json(results);
   });
 });

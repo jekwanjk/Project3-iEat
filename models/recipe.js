@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const recipeSchema = new Schema({
-  img: { type: String },
+  imgURL: { type: String },
   ingredients: { type: Array },
   name: { type: String },
   qty: { type: Array },
-  sourceURL: { type: String },
+  recipeURL: { type: String },
   units: { type: Array }
 });
 
