@@ -40,10 +40,10 @@ router.post("/register", function (req, res) {
   });
 });
 
-// Get user data
-router.get("/api/user", function (req, res) {
-  db.User.find();
-});
+// // Get user data
+// router.get("/api/user", function (req, res) {
+//   db.User.find();
+// });
 
 // Endpoint to login
 router.post("/login", passport.authenticate("local"), function (req, res) {
