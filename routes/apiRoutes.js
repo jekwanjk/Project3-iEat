@@ -4,8 +4,12 @@ const passport = require("passport");
 
 router.post("/api/recipes", function (req, res) {
   console.log(req.body);
-  db.Recipe.create(req.body).then(function (results) {
-    console.log(results);
+  db.User.create(req.body).then(function (results) {
+    console.log("Results", results);
+    // results.recipes.map((recipe) => {
+    //   console.log("recipe", JSON.stringify(recipe));
+    // });
+
     res.json(results);
   });
 });
@@ -34,6 +38,11 @@ router.post("/register", function (req, res) {
     if (err) throw err;
     res.send(user).end();
   });
+});
+
+// Get user data
+router.get("/api/user", function (req, res) {
+  db.User.find();
 });
 
 // Endpoint to login

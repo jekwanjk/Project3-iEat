@@ -30,12 +30,9 @@ var UserSchema = mongoose.Schema({
   zipCode: {
     type: String
   },
-  recipes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Recipe"
-    }
-  ]
+  recipes: {
+    type: Array
+  }
 });
 
 var User = (module.exports = mongoose.model("User", UserSchema));
