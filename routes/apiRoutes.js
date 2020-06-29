@@ -15,7 +15,7 @@ router.post("/api/recipes", function (req, res) {
 });
 
 router.get("/api/recipes", function (req, res) {
-  db.Recipe.find().then(function (results) {
+  db.User.find().then(function (results) {
     res.json(results);
   });
 });
