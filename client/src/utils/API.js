@@ -7,8 +7,8 @@ export default {
   },
 
   // Add recipes to database
-  recordRecipes: function (finalRecipes) {
-    return axios.post("/api/recipes", finalRecipes);
+  recordRecipes: function (userData) {
+    return axios.post("/api/recipes", userData);
   },
 
   createUser: function (userData) {

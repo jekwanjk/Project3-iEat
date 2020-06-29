@@ -11,7 +11,9 @@ function RecipeItem(props) {
       <h5>{props.name}</h5>
       <center>
         <Button>
-          <a href={props.source}> View Recipe</a>
+          <a target="_blank" href={props.source}>
+            View Recipe
+          </a>
         </Button>
       </center>
     </Card>

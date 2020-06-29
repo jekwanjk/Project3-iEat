@@ -7,11 +7,11 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "21d43743f24e4162b30f8803e6cab610";
+  const spoonacularAPI = "70c7b8d7ac1645488890f3d4a3dec34c";
 
   // userData holds inputted fields from sign up form
   const [userData, setUserData] = useState({
-    name: "",
+    name: "Amanda",
     dietRestrictions: "peanuts",
     calories: 2000,
     dietType: "Gluten Free",
@@ -31,7 +31,7 @@ function Recipes() {
 
   useEffect(() => {
     /* -------------------------------------------------------
-    TODO: CALL BACK END TO GET USER DATA 
+    TODO: CALL BACK END TO GET USER DATA - NOT WORKING
     ---------------------------------------------------------*/
 
     // TODO: Call backend to get the user data
@@ -48,6 +48,13 @@ function Recipes() {
       .catch((err) => console.log(err));
 
     console.log(JSON.stringify(userData));
+
+    /* -------------------------------------------------------
+    TODO: CALL BACK END TO GET RECIPES FOR SPECIFIC USER
+    
+    If user has recipes, display those recipes. 
+    If not, got ahead and make the API call
+    ---------------------------------------------------------*/
 
     // Get all recipes from Spoonacular API
     getAllRecipes(
@@ -154,7 +161,7 @@ function Recipes() {
             console.log(finalRecipes);
 
             setFinalRecipesDOM(finalRecipes);
-            console.log("FINAL DATA FOR DOM", finalRecipesDOM);
+            console.log("FINAL DATA FOR DOM set");
             /* -------------------------------------------------------
                 TODO: SEND FINAL DATA TO DATABASE 
             ---------------------------------------------------------*/
@@ -206,24 +213,27 @@ function Recipes() {
 
   function storeRecipes() {
     console.log("Store recipes");
-    API.recordRecipes(finalRecipes)
+
+    userData.recipes = finalRecipes;
+
+    API.recordRecipes(userData)
       .then((res) => {
         console.log("Recipes added to database!");
+        console.log(res.data.name);
+        console.log(res.data.recipes[0]);
       })
       .catch((err) => console.log(err));
   }
 
   return (
     <div>
-      <RecipeHeader userName={userData.name}></RecipeHeader>
-
-      {/* TODO: wait until user is defined to add name to page
+      {/* <RecipeHeader userName={userData.name}></RecipeHeader> */}
+      {/* //TODO: wait until user is defined to add name to page */}
       {userData != [] ? (
         <RecipeHeader userName={userData.name}></RecipeHeader>
       ) : (
         <p>User doesn't exist</p>
-      )} */}
-
+      )}
       <h3 className="text-center">Meal Plan For The Week</h3>
       <hr></hr>
       <br></br>
