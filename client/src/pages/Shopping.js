@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import ShoppingList from "../components/ShoppingList";
+import "antd/dist/antd.css";
+import { Checkbox } from "antd";
 
 function Shopping() {
   const [user, setUser] = useState({
@@ -78,9 +80,15 @@ function Shopping() {
     });
   };
 
+  function onChange(e) {
+    console.log(`checked = ${e.target.checked}`);
+  }
+
   return (
     <div>
-      <h1>{user.name}'s Shopping List</h1>
+      <center>
+        <h1>{user.name}'s Shopping List</h1>
+      </center>
       <ShoppingList
         handleSubmitBtn={handleSubmitBtn}
         userName={user.userName}
@@ -88,11 +96,19 @@ function Shopping() {
       <ul>
         {Array.isArray(user.recipes) && user.recipes.length
           ? user.recipes.map((recipe) =>
-              recipe.ingredients.map((item, index) => (
-                <li className="list-group-item">
-                  {item} {recipe.qty[index]} {recipe.units[index]}
-                </li>
-              ))
+              recipe.ingredients.map((item, index) =>
+                index === 0 ? (
+                  <li className="list-group-item">
+                    <h1>{recipe.name}</h1>
+                  </li>
+                ) : (
+                  <li className="list-group-item">
+                    <Checkbox onChange={onChange}>
+                      {item} {recipe.qty[index]} {recipe.units[index]}
+                    </Checkbox>
+                  </li>
+                )
+              )
             )
           : console.log("Array is empty")}
       </ul>
