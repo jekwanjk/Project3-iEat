@@ -1,0 +1,36 @@
+.signup {
+  width: 70%;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 45px;
+  box-shadow: 5px 10px 18px black;
+}
+
+label {
+  font-weight: bold;
+}
+
+body {
+  background: url(https://images.unsplash.com/photo-1548940740-204726a19be3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2135&q=80)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#logo {
+  font-family: "Yellowtail", cursive;
+}
+
+.fas {
+  color: #c74805;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+#welcome {
+  font-size: 18px;
+}
