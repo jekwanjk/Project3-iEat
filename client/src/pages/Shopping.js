@@ -94,13 +94,19 @@ function Shopping() {
       <ul>
         {Array.isArray(user.recipes) && user.recipes.length
           ? user.recipes.map((recipe) =>
-              recipe.ingredients.map((item, index) => (
-                <li className="list-group-item">
-                  <Checkbox onChange={onChange}>
-                    {item} {recipe.qty[index]} {recipe.units[index]}
-                  </Checkbox>
-                </li>
-              ))
+              recipe.ingredients.map((item, index) =>
+                index === 0 ? (
+                  <li className="list-group-item">
+                    <h1>{recipe.name}</h1>
+                  </li>
+                ) : (
+                  <li className="list-group-item">
+                    <Checkbox onChange={onChange}>
+                      {item} {recipe.qty[index]} {recipe.units[index]}
+                    </Checkbox>
+                  </li>
+                )
+              )
             )
           : console.log("Array is empty")}
       </ul>
