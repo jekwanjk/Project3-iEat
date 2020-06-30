@@ -1,11 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import SignUp from "./pages/SignUp.js";
 import Recipes from "./pages/Recipes.js";
-import RecipeHeader from "./components/RecipeHeader";
-
+import Shopping from "./pages/Shopping.js";
 function App() {
-  return <Recipes />;
+  return (
+    <div>
+      <SignUp />
+      {/* <Recipes /> */}
+      <Shopping />
+    </div>
+  );
 }
-
 export default App;
