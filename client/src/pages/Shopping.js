@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import ShoppingList from "../components/ShoppingList";
+import "antd/dist/antd.css";
+import { Checkbox } from "antd";
 
 function Shopping() {
   const [user, setUser] = useState({
@@ -78,6 +80,10 @@ function Shopping() {
     });
   };
 
+  function onChange(e) {
+    console.log(`checked = ${e.target.checked}`);
+  }
+
   return (
     <div>
       <h1>{user.name}'s Shopping List</h1>
@@ -90,7 +96,9 @@ function Shopping() {
           ? user.recipes.map((recipe) =>
               recipe.ingredients.map((item, index) => (
                 <li className="list-group-item">
-                  {item} {recipe.qty[index]} {recipe.units[index]}
+                  <Checkbox onChange={onChange}>
+                    {item} {recipe.qty[index]} {recipe.units[index]}
+                  </Checkbox>
                 </li>
               ))
             )
