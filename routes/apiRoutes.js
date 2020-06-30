@@ -14,8 +14,10 @@ router.post("/api/recipes", function (req, res) {
   });
 });
 
-router.get("/api/recipes", function (req, res) {
-  db.User.find().then(function (results) {
+router.get("/api/recipes/:name", function (req, res) {
+  console.log("router.get -- req.params.name", req.params.name);
+  db.User.find({ name: req.params.name }).then(function (results) {
+    console.log("results", results);
     res.json(results);
   });
 });
