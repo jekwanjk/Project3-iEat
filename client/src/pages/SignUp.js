@@ -3,9 +3,15 @@ import API from "../utils/API";
 import SignUpForm from "../components/SignUpForm";
 function SignUp() {
   const [user, setUser] = useState({
-    userName: "",
+    name: "",
     email: "",
-    password: ""
+    password: "",
+    calories: 0,
+    dietRestrictions: "",
+    dietType: "",
+    city: "",
+    state: "",
+    zipCode: ""
     // Add remaining properties here
   });
   // After user has entered the sign up form, we will check the user who sign up for the recipes to see if he/she already exists in database
@@ -34,9 +40,15 @@ function SignUp() {
       <SignUpForm
         handleFormSubmit={handleFormSubmit}
         handleInputChange={handleInputChange}
-        userName={user.userName}
+        name={user.name}
         email={user.email}
         password={user.password}
+        calories={user.calories}
+        dietRestrictions={user.dietRestrictions}
+        dietType={user.dietType}
+        city={user.city}
+        state={user.state}
+        zipCode={user.zipCode}
       ></SignUpForm>
     </>
   );
