@@ -22,8 +22,15 @@ router.get("/api/recipes/:name", function (req, res) {
   });
 });
 
+router.get("/api/recipes", function (req, res) {
+  db.User.find().then(function (results) {
+    res.json(results);
+  });
+});
+
 // Register User
 router.post("/register", function (req, res) {
+  console.log("router.post /register", req.body);
   var newUser = new db.User({
     name: req.body.name,
     email: req.body.email,

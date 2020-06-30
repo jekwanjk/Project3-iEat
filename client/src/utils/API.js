@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export default {
   //Get user information from the database
   getUserInfo: function (user) {
@@ -11,7 +12,7 @@ export default {
   },
 
   getRecipes: function (userData) {
-    console.log("getRecipes", userData);
+    console.log("API getRecipes", userData);
     return axios.get("/api/recipes/" + userData.name);
   },
 
