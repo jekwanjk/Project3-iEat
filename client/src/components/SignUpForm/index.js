@@ -65,7 +65,6 @@ function SignUpForm(props) {
         </label>
 
         <select
-          value={props.dietRestrictions}
           onChange={props.handleInputChange}
           class="form-control"
           id="restrict-option"
@@ -89,7 +88,6 @@ function SignUpForm(props) {
           What kind of diet are you interested in?
         </label>
         <select
-          value={props.dietType}
           onChange={props.handleInputChange}
           class="form-control"
           id="diet-option"

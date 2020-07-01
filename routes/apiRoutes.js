@@ -4,7 +4,7 @@ const passport = require("passport");
 
 router.post("/api/recipes", function (req, res) {
   console.log(req.body);
-  db.User.create(req.body).then(function (results) {
+  db.User.findOneAndUpdate(req.body).then(function (results) {
     console.log("Results", results);
     // results.recipes.map((recipe) => {
     //   console.log("recipe", JSON.stringify(recipe));
@@ -63,6 +63,7 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 // Endpoint to get current user
 router.get("/user", function (req, res) {
   if (req.user) {
+    console.log("/user api call ", req.user);
     res.send(req.user);
   }
   // return res.status(404).end();

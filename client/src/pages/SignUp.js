@@ -23,10 +23,17 @@ function SignUp() {
       })
       .catch((err) => console.log(err));
   }, [user]);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
+
+  const handleSelect = (e) => {
+    console.log("SELECTION", e);
+    // setUser({ ...user, [name]: value });
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     API.createUser(user)
@@ -54,6 +61,7 @@ function SignUp() {
       <SignUpForm
         handleFormSubmit={handleFormSubmit}
         handleInputChange={handleInputChange}
+        handleSelect={handleSelect}
         name={user.name}
         email={user.email}
         password={user.password}
