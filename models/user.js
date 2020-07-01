@@ -38,6 +38,7 @@ var UserSchema = mongoose.Schema({
 var User = (module.exports = mongoose.model("User", UserSchema));
 
 module.exports.createUser = function (newUser, callback) {
+  console.log("createUser - newUser", newUser);
   bcrypt.genSalt(10, function (err, salt) {
     bcrypt.hash(newUser.password, salt, function (err, hash) {
       newUser.password = hash;
@@ -47,16 +48,19 @@ module.exports.createUser = function (newUser, callback) {
 };
 
 module.exports.getUserByEmail = function (email, callback) {
+  console.log("getUserByEmail", email);
   var query = { email: email };
   console.log(query);
   User.findOne(query, callback);
 };
 
 module.exports.getUserById = function (id, callback) {
+  console.log("getUserById", id);
   User.findById(id, callback);
 };
 
 module.exports.comparePassword = function (candidatePassword, hash, callback) {
+  console.log("comparePassword");
   bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
     if (err) throw err;
     callback(null, isMatch);
@@ -70,7 +74,7 @@ passport.use(
     password,
     done
   ) {
-    console.log(email);
+    console.log("LocalStrategy");
     User.getUserByEmail(email, function (err, user) {
       if (err) throw err;
       if (!user) {
@@ -89,10 +93,12 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
+  console.log("serializeUser", user.id);
   done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
+  console.log("deserializeUser", id);
   User.getUserById(id, function (err, user) {
     done(err, user);
   });

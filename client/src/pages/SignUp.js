@@ -32,6 +32,20 @@ function SignUp() {
     API.createUser(user)
       .then((res) => {
         console.log("handleFormSubmit res:", res);
+        // JYH - initialize the fields
+        setUser({
+          name: "",
+          email: "",
+          password: "",
+          calories: 0,
+          dietRestrictions: "",
+          dietType: "",
+          city: "",
+          state: "",
+          zipCode: ""
+        });
+        // JYH - redirect to the signin page
+        window.location.replace("/login");
       })
       .catch(() => console.log("handleFormSubmit saveUser ERROR"));
   };

@@ -62,11 +62,25 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 
 // Endpoint to get current user
 router.get("/user", function (req, res) {
-  res.send(req.user);
+  if (req.user) {
+    res.send(req.user);
+  }
+  // return res.status(404).end();
+  res.redirect("/login");
+  // res.sendFile(path.join(__dirname, "../public/login.html"));
+});
+
+router.get("/login", function (req, res) {
+  if (req.user) {
+    res.send(req.user);
+  }
+  return res.status(404).end();
+  // res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
 // Endpoint to logout
 router.get("/logout", function (req, res) {
+  console.log("/logout");
   req.logout();
   res.send(null);
 });
