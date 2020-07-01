@@ -87,7 +87,7 @@ function Shopping() {
   return (
     <div>
       <center>
-        <h1>{user.name}'s Shopping List</h1>
+        <h1 style={{ color: "white" }}>{user.name}'s Shopping List</h1>
       </center>
       <ShoppingList
         handleSubmitBtn={handleSubmitBtn}
