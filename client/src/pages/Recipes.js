@@ -7,14 +7,21 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "1500a2d362b44abeaaf57006c30ec2cc";
+  const spoonacularAPI = "2a42b280a548451fb8569bca8bc0334d";
 
   // userData holds inputted fields from sign up form
+  // const [userData, setUserData] = useState({
+  //   name: "Amanda",
+  //   dietRestrictions: "peanuts",
+  //   calories: 2000,
+  //   dietType: "Gluten Free",
+  //   recipes: []
+  // });
   const [userData, setUserData] = useState({
-    name: "Amanda",
-    dietRestrictions: "peanuts",
-    calories: 2000,
-    dietType: "Gluten Free",
+    name: "",
+    dietRestrictions: "",
+    calories: 0,
+    dietType: "",
     recipes: []
   });
 
@@ -45,7 +52,10 @@ function Recipes() {
           dietType: res.dietType
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        window.location.replace("/login");
+      });
 
     console.log(JSON.stringify(userData));
 

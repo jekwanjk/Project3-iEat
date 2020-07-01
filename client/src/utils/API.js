@@ -6,6 +6,16 @@ export default {
     console.log("getUserInfo - user", user);
     return axios.get("/user", user);
   },
+  // Logout the current user
+  logoutUser: function () {
+    console.log("logoutUser");
+    return axios.get("/logout");
+  },
+  // Validate user login credentials
+  validateUser: function (loginInfo) {
+    console.log("validateUser - loginInfo", loginInfo);
+    return axios.post("/login", loginInfo);
+  },
   // Add recipes to database
   recordRecipes: function (userData) {
     return axios.post("/api/recipes", userData);
