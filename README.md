@@ -2,7 +2,7 @@
 
 # IEat
 
-## Description
+## Description 
 
 This application lets users input their dietary restrictions, calories, and diet to generate a weekly meal plan with recipe instructions and list of all ingredients needed to go shopping with.
 
