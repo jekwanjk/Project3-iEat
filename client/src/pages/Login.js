@@ -7,6 +7,14 @@ function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const styles = {
+    backgroundColor: {
+      background: "#fff",
+      padding: "45px",
+      width: "65%"
+    }
+  };
+
   const validateForm = function () {
     return email.length > 0 && password.length > 0;
   };
@@ -27,7 +35,12 @@ function LogIn() {
 
   return (
     <div className="Login">
-      <form onSubmit={handleSubmit}>
+      <form style={styles.backgroundColor} onSubmit={handleSubmit}>
+        <center>
+          <h1 id="logo">
+            <i className="fas fa-utensils"></i> iEat
+          </h1>
+        </center>
         <FormGroup controlId="email" size="large">
           <FormLabel>Email</FormLabel>
           <FormControl

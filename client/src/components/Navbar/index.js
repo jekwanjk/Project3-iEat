@@ -21,7 +21,7 @@ class Navbar extends React.Component {
           <Menu.Item key="2">
             <Link to="/shopping">Shopping list</Link>
           </Menu.Item>
-          <Menu.Item key="3">Stores</Menu.Item>
+
           <Menu.Item style={{ float: "right" }} key="4">
             <Link to="/logout">Log Out</Link>
           </Menu.Item>

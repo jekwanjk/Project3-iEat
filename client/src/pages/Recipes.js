@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "2a42b280a548451fb8569bca8bc0334d";
+  const spoonacularAPI = "d6170fa97a4d4d969fd98e550f3502bf";
 
   // userData holds inputted fields from sign up form
   // const [userData, setUserData] = useState({
@@ -17,6 +17,13 @@ function Recipes() {
   //   dietType: "Gluten Free",
   //   recipes: []
   // });
+
+  const styles = {
+    backgroundColor: {
+      background: "#fff"
+    }
+  };
+
   const [userData, setUserData] = useState({
     name: "",
     dietRestrictions: "",
@@ -236,7 +243,7 @@ function Recipes() {
   }
 
   return (
-    <div>
+    <div style={styles.backgroundColor}>
       {/* <RecipeHeader userName={userData.name}></RecipeHeader> */}
       {/* //TODO: wait until user is defined to add name to page */}
       {userData != [] ? (
