@@ -147,7 +147,7 @@ function SignUpForm(props) {
           <button
             type="submit"
             onClick={props.handleFormSubmit}
-            className="btn btn-dark"
+            className="btn btn-primary"
           >
             Sign Up
           </button>
