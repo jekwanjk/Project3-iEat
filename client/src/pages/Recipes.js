@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 
 function Recipes() {
   // Spoonacular API Key
-  const spoonacularAPI = "d6170fa97a4d4d969fd98e550f3502bf";
+  const spoonacularAPI = "0e8b3ea0cf384aa4bfeb60fe91b74e74";
 
   // userData holds inputted fields from sign up form
   // const [userData, setUserData] = useState({
@@ -53,10 +53,10 @@ function Recipes() {
       .then((res) => {
         console.log("User info", res);
         setUserData({
-          name: res.name,
-          dietRestrictions: res.dietRestrictions,
-          calories: res.calories,
-          dietType: res.dietType
+          name: res.data.name,
+          dietRestrictions: res.data.dietRestrictions,
+          calories: res.data.calories,
+          dietType: res.data.dietType
         });
       })
       .catch((err) => {

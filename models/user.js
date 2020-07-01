@@ -76,6 +76,7 @@ passport.use(
   ) {
     console.log("LocalStrategy");
     User.getUserByEmail(email, function (err, user) {
+      console.log("passport user", user);
       if (err) throw err;
       if (!user) {
         return done(null, false, { message: "Unknown User" });
@@ -93,13 +94,14 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  console.log("serializeUser", user.id);
+  console.log("serializeUser", user);
   done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
   console.log("deserializeUser", id);
   User.getUserById(id, function (err, user) {
+    console.log("deserialized", user);
     done(err, user);
   });
 });
