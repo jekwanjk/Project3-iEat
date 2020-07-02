@@ -12,6 +12,15 @@ function LogIn() {
       background: "#fff",
       padding: "45px",
       width: "65%"
+    },
+
+    errorLogin: {
+      background: "#fff",
+      width: "400px",
+      margin: "auto",
+      textAlign: "center",
+      fontSize: "14px",
+      fontWeight: "800"
     }
   };
 
@@ -30,7 +39,12 @@ function LogIn() {
         // JYH - redirect to the recipes page
         window.location.replace("/recipes");
       })
-      .catch(() => console.log("handSubmit validateUser ERROR"));
+      .catch(() => {
+        console.log("handSubmit validateUser ERROR");
+        var errorDiv = document.getElementById("error");
+        errorDiv.innerHTML = "Invalid email or password, please try again.";
+        errorDiv.style.padding = "35px";
+      });
   };
 
   return (
@@ -62,6 +76,8 @@ function LogIn() {
           <strong>Login</strong>
         </Button>
       </form>
+      <br></br>
+      <div style={styles.errorLogin} id="error"></div>
     </div>
   );
 }
