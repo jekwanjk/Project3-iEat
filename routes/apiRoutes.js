@@ -57,14 +57,14 @@ router.post("/register", function (req, res) {
 // Endpoint to login
 router.post("/login", passport.authenticate("local"), function (req, res) {
   console.log("User", req.user);
-  res.send(req.user);
+  return res.send(req.user);
 });
 
 // Endpoint to get current user
 router.get("/user", function (req, res) {
   if (req.user) {
-    console.log("/user api call ", req.user);
-    res.send(req.user);
+    console.log("router.get /user - req.user", req.user);
+    return res.send(req.user);
   }
   // return res.status(404).end();
   res.redirect("/login");
