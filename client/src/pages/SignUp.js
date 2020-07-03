@@ -27,6 +27,7 @@ function SignUp() {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
+    console.log(value);
   };
 
   const handleSelect = (e) => {
@@ -58,6 +59,7 @@ function SignUp() {
   };
   return (
     <>
+      {console.log(user.dietRestrictions, "Sign Up")}
       <SignUpForm
         handleFormSubmit={handleFormSubmit}
         handleInputChange={handleInputChange}

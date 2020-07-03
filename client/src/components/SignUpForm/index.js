@@ -63,24 +63,26 @@ function SignUpForm(props) {
         <label for="restrict-option">
           What kind of dietary restrictions do you have?
         </label>
-
+        {console.log(props.dietRestrictions, "Diet Restriction")}
         <select
+          name="dietRestrictions"
           onChange={props.handleInputChange}
+          value={props.dietRestrictions}
           class="form-control"
           id="restrict-option"
         >
-          <option>Dairy</option>
-          <option>Egg</option>
-          <option>Gluten</option>
-          <option>Grain</option>
-          <option>Peanut</option>
-          <option>Seafood</option>
-          <option>Sesame</option>
-          <option>Shellfish</option>
-          <option>Soy</option>
-          <option>Sulfite</option>
-          <option>Tree Nut</option>
-          <option>Wheat</option>
+          <option value="Dairy">Dairy</option>
+          <option value="Egg">Egg</option>
+          <option value="Gluten">Gluten</option>
+          <option value="Grain">Grain</option>
+          <option value="Peanut">Peanut</option>
+          <option value="Seafood">Seafood</option>
+          <option value="Sesame">Sesame</option>
+          <option value="Shellfish">Shellfish</option>
+          <option value="Soy">Soy</option>
+          <option value="Sulfite">Sulfite</option>
+          <option value="Tree Nut">Tree Nut</option>
+          <option value="Wheat">Wheat</option>
         </select>
         <br></br>
 
@@ -89,19 +91,21 @@ function SignUpForm(props) {
         </label>
         <select
           onChange={props.handleInputChange}
+          name="dietType"
+          value={props.dietType}
           class="form-control"
           id="diet-option"
         >
-          <option>Gluten Free</option>
-          <option>Ketogenic</option>
-          <option>Vegetarian</option>
-          <option>Lacto-Vegetarian</option>
-          <option>Ovo-Vegetarian</option>
-          <option>Vegan</option>
-          <option>Pescatarian</option>
-          <option>Paleo</option>
-          <option>Primal</option>
-          <option>Whole30</option>
+          <option value="Gluten Free">Gluten Free</option>
+          <option value="Ketogenic">Ketogenic</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Lacto-Vegetarian">Lacto-Vegetarian</option>
+          <option value="Ovo-Vegetarian">Ovo-Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+          <option value="Pescatarian">Pescatarian</option>
+          <option value="Paleo">Paleo</option>
+          <option value="Primal">Primal</option>
+          <option value="Whole30">Whole30</option>
         </select>
         <br></br>
 
@@ -143,8 +147,8 @@ function SignUpForm(props) {
 
         <center>
           <button
-            type="submit"
             onClick={props.handleFormSubmit}
+            type="submit"
             className="btn btn-primary"
           >
             Sign Up
