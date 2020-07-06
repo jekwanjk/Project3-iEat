@@ -13,7 +13,7 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
   //set static folder
-  app.use(express.static("client/build"));
+  app.use(express.static(publicPath));
 }
 
 app.get("*", (req, res) => {
