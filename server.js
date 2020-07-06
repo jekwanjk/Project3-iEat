@@ -25,7 +25,10 @@ app.use(passport.session());
 const apiRoutes = require("./routes/apiRoutes");
 app.use(apiRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ieat");
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb://user:password1@ds311968.mlab.com:11968/heroku_jcsxk76l"
+);
 
 app.listen(PORT, function () {
   console.log("App is listening on port http://localhost:" + PORT);
