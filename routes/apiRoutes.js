@@ -3,7 +3,18 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.post("/api/recipes", function (req, res) {
-  console.log(req.body);
+  console.log("post for api/recipes", req.body);
+  console.log("post for api/recipes request user", req.user);
+  req.body.name = req.user.name;
+  req.body.dietRestrictions = req.user.dietRestrictions;
+  req.body.dietType = req.user.dietType;
+  req.body.calories = req.user.calories;
+  req.body.city = req.user.city;
+  req.body.state = req.user.state;
+  req.body.zipCode = req.user.zipCode;
+
+  console.log("After assignments post for api/recipes", req.body);
+
   db.User.findOneAndUpdate(req.body).then(function (results) {
     console.log("Results", results);
     // results.recipes.map((recipe) => {
