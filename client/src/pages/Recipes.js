@@ -6,14 +6,8 @@ import RecipeItem from "../components/RecipeItem";
 import { Row, Col } from "antd";
 
 function Recipes() {
-  // Spoonacular API Key
-<<<<<<< HEAD
+  //Spoonacular API key
   const spoonacularAPI = "2d13159a314a4238847fdf4bfd83f551";
-=======
-
-  const spoonacularAPI = "c0bc5164377044b48b416664d2929c72";
-
->>>>>>> 64d7164bb10bf462278e2f1b93838b02c5efc723
 
   // userData holds inputted fields from sign up form
   // const [userData, setUserData] = useState({

@@ -15,10 +15,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
-
 // Express Session
 app.use(
   session({
@@ -35,10 +31,7 @@ app.use(passport.session());
 const apiRoutes = require("./routes/apiRoutes");
 app.use(apiRoutes);
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb://user:password1@ds311968.mlab.com:11968/heroku_jcsxk76l"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ieat");
 
 app.listen(PORT, function () {
   console.log("App is listening on port http://localhost:" + PORT);
