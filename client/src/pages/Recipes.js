@@ -10,7 +10,6 @@ function Recipes() {
 
   const spoonacularAPI = "c0bc5164377044b48b416664d2929c72";
 
-
   // userData holds inputted fields from sign up form
   // const [userData, setUserData] = useState({
   //   name: "Amanda",
@@ -233,7 +232,8 @@ function Recipes() {
   function storeRecipes() {
     console.log("Store recipes");
 
-    userData.recipes = finalRecipes;
+    // userData.recipes = finalRecipes;
+    setUserData({ ...userData, recipes: finalRecipes });
 
     API.recordRecipes(userData)
       .then((res) => {
