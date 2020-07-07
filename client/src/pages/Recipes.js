@@ -8,8 +8,7 @@ import { Row, Col } from "antd";
 function Recipes() {
   // Spoonacular API Key
 
-  const spoonacularAPI = "c0bc5164377044b48b416664d2929c72";
-
+  const spoonacularAPI = "03afe5dc75b44c69b74fb567a0bc76d4";
 
   // userData holds inputted fields from sign up form
   // const [userData, setUserData] = useState({
