@@ -3,6 +3,7 @@ import API from "../utils/API";
 import ShoppingList from "../components/ShoppingList";
 
 function Shopping() {
+  console.log("Shopping");
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -10,7 +11,7 @@ function Shopping() {
     // getCurrentUser();
     API.getUserInfo()
       .then((res) => {
-        console.log("getCurrentUser - res.data", res.data);
+        console.log("Shopping getCurrentUser - res.data", res.data);
         setUser({
           calories: res.data.calories,
           city: res.data.calories,
